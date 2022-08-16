@@ -1,0 +1,247 @@
+.gearSystem {
+  width: 740px;
+  height: 740px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    & > img {
+      position: absolute;
+    }
+  }
+
+  $animationTime: 0.4s;
+  $animationMode: ease;
+  &_base {
+    $opacity: 1;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 14px 14px 60px #929292, -14px -14px 60px #ffffff;
+
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+    &.active {
+      opacity: $opacity;
+    }
+    &-left {
+      width: 36.62%;
+      top: 104.5px;
+      left: 9.8px;
+
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 7;
+      }
+    }
+    &-right {
+      width: 79.68%;
+      top: 9px;
+      right: 9px;
+      
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 1;
+      }
+    }
+    &-bottom {
+      width: 61.35%;
+      bottom: 14px;
+      right: 112.5px;
+      
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 1;
+      }
+    }
+  }
+  &_gear {
+    $opacity: 1;
+    &-1,
+    &-2,
+    &-3,
+    &-4,
+    &-5,
+    &-6,
+    &-7,
+    &-8{
+      transition: 0.05s;
+    }
+    &-1 {
+      width: 40.8%;
+      bottom: 70px;
+      left: 137px;
+      
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 1;
+      }
+    }
+    &-2 {
+      width: 35%;
+      top: 90px;
+      right: 97px;
+      
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 1;
+      }
+      &_screw {
+        width: 5.44%;
+        top: 199.5px;
+        right: 206px;
+      
+        opacity: 0;
+        &.active {
+          animation: zoom $animationTime $animationMode;
+          opacity: 1;
+        }
+      }
+    }
+    &-3 {
+      width: 16.68%;
+      top: 48px;
+      right: 313px;
+      
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 1;
+      }
+      &_screw {
+        width: 4.87%;
+        top: 92px;
+        right: 357px;
+      
+        opacity: 0;
+        &.active {
+          animation: zoom $animationTime $animationMode;
+          opacity: 1;
+        }
+      }
+    }
+    &-4 {
+      width: 10.6%;
+      top: 318px;
+      right: 96px;
+
+      
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 1;
+      }
+      &_screw {
+        width: 4.91%;
+        top: 340px;
+        right: 117px;
+      
+        opacity: 0;
+        &.active {
+          animation: zoom $animationTime $animationMode;
+          opacity: 1;
+        }
+      }
+    }
+    &-5 {
+      width: 11.3%;
+      top: 384px;
+      right: 126px;
+
+
+      
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 1;
+      }
+      &_screw {
+        width: 4.91%;
+
+        top: 408px;
+        right: 150px;
+      
+        opacity: 0;
+        &.active {
+          animation: zoom $animationTime $animationMode;
+          opacity: 1;
+        }
+      }
+    }
+    &-6 {
+      width: 17.36%;
+      top: 277px;
+      left: 192px;
+
+      
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 1;
+      }
+    }
+    &-7 {
+      width: 24.5%;
+      top: 175.5px;
+      left: 66.5px;
+
+      
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 1;
+      }
+    }
+    &-8 {
+      width: 23.04%;
+      bottom: 163.5px;
+      right: 47px;
+
+      
+      opacity: 0;
+      &.active {
+        animation: zoom $animationTime $animationMode;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zoom {
+  0%{
+    opacity: 0;
+    transform: scale(3);
+
+  }
+  40%{
+    opacity: 1;
+  }
+  100%{
+
+    transform: scale(1);
+
+  }
+}

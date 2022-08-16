@@ -1,0 +1,63 @@
+$mainFont: 'Helvetica Now Display';
+
+.tech {
+  font-family: $mainFont;
+  &_wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+
+    column-gap: 7px;
+
+  }
+  &_square{
+
+    width: 10px;
+    height: 10px;
+    margin-left: 7px;
+    transform: rotate(45deg);
+    border: 2px white solid;
+
+    position: relative;
+    &::after{
+      content: '';
+      width: 50%;
+      height: 50%;
+      background: white;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+  &-html,
+  &-css,
+  &-js,
+  &-scss,
+  &-ts,
+  &-webpack,
+  &-gulp {
+    font-weight: 400;
+    font-size: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+
+  &-js,
+  &-ts{
+    
+    & > div {
+      display: flex;
+    }
+    & span{
+      font-weight: 900;
+    }
+    & h4{
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+}
