@@ -14,6 +14,8 @@ import './styles/projects-techs.scss';
 import './styles/about.scss';
 import './styles/gearSystem.scss';
 
+import './styles/media.scss';
+
 import { App } from './app/app';
 
 const app = new App()

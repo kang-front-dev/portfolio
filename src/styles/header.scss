@@ -35,9 +35,16 @@ $brown: #4b3124;
     &.light {
       & .header__nav_link {
         color: $secColor;
-        &::after {
-          background: rgba(255, 255, 255, 0.1);
+        &:hover{
+          color: $mainColor;
         }
+        &::after {
+          background: $secColor;
+        }
+        
+      }
+      & .header__nav_logo{
+        color: $secColor;
       }
     }
 
@@ -69,6 +76,7 @@ $brown: #4b3124;
       transition: 0.15s ease-in-out;
 
       position: relative;
+      z-index: 5;
       &::after {
         content: '';
         position: absolute;
@@ -80,8 +88,8 @@ $brown: #4b3124;
         bottom: 50%;
         left: 50%;
 
-        background: rgba(0, 0, 0, 0.03);
-
+        background: $mainColor;
+        z-index: -1;
         border: 1px solid rgba(0, 0, 0, 0.04);
 
         transform: translate(-50%, 50%);
@@ -89,6 +97,7 @@ $brown: #4b3124;
         transition: 0.15s ease-in-out;
       }
       &:hover {
+        color: $secColor;
         &::after {
           opacity: 1;
         }
@@ -119,6 +128,10 @@ $brown: #4b3124;
 
       position: relative;
 
+      
+      // border-radius: 20px;
+      overflow: hidden;
+
       &::before {
         content: '';
         position: absolute;
@@ -131,8 +144,10 @@ $brown: #4b3124;
         opacity: 0;
         z-index: 5;
       }
-
+        
       &.active {
+        // animation: boxShadowHeaderLeft 0.5s ease-in-out;
+        // box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
         &::before {
           width: 140px;
           height: 70px;
@@ -141,6 +156,14 @@ $brown: #4b3124;
         }
       }
 
+      // @keyframes boxShadowHeaderLeft{
+      //   0%{
+      //     box-shadow: none;
+      //   }
+      //   100%{
+      //     box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+      //   }
+      // }
 
       &_wrapper {
         display: flex;
@@ -222,7 +245,7 @@ $brown: #4b3124;
         0% {
           box-shadow: 3px 3px 7px #bebebe, -3px -3px 7px #ffffff;
         }
-        50%{
+        50% {
           box-shadow: none;
         }
         100% {
@@ -233,7 +256,7 @@ $brown: #4b3124;
         0% {
           box-shadow: inset 3px 3px 7px #bebebe, inset -3px -3px 7px #ffffff;
         }
-        50%{
+        50% {
           box-shadow: none;
         }
         100% {

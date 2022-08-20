@@ -16,14 +16,12 @@ export class Header {
     this.initButton();
 
     this.setNavColorChange();
-    this.setHeaderHeight();
+
     window.addEventListener('resize', () => {
       this.header.style.height = `${window.innerHeight}px`;
     });
   }
-  setHeaderHeight() {
-    this.header.style.height = `${window.innerHeight}px`;
-  }
+
   buildArt() {
     const totalAmount = 144;
     const excArr = [
@@ -215,7 +213,7 @@ export class Header {
     const headerNav = document.querySelector('.header__nav');
     const main = document.querySelector('.main');
     const about = document.querySelector('.about')
-
+    
     document.addEventListener('scroll', () => {
       if (main.getBoundingClientRect().top < 0) {
         headerNav.classList.add('light');

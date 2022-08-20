@@ -1,11 +1,12 @@
 .gearSystem {
-  width: 740px;
-  height: 740px;
+  width: 100%;
+
   border-radius: 50%;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
 
   &_wrapper {
     position: relative;
@@ -35,8 +36,8 @@
     }
     &-left {
       width: 36.62%;
-      top: 104.5px;
-      left: 9.8px;
+      top: 14.12%;
+      left: 1.32%;
 
       opacity: 0;
       &.active {
@@ -46,8 +47,8 @@
     }
     &-right {
       width: 79.68%;
-      top: 9px;
-      right: 9px;
+      top: 1.216%;
+      right: 1.216%;
       
       opacity: 0;
       &.active {
@@ -57,8 +58,8 @@
     }
     &-bottom {
       width: 61.35%;
-      bottom: 14px;
-      right: 112.5px;
+      bottom: 1.89%;
+      right: 15.20%;
       
       opacity: 0;
       &.active {
@@ -81,8 +82,8 @@
     }
     &-1 {
       width: 40.8%;
-      bottom: 70px;
-      left: 137px;
+      bottom: 9.45%;
+      left: 18.51%;
       
       opacity: 0;
       &.active {
@@ -92,8 +93,8 @@
     }
     &-2 {
       width: 35%;
-      top: 90px;
-      right: 97px;
+      top: 12.16%;
+      right: 13.10%;
       
       opacity: 0;
       &.active {
@@ -102,8 +103,8 @@
       }
       &_screw {
         width: 5.44%;
-        top: 199.5px;
-        right: 206px;
+        top: 26.95%;
+        right: 27.83%;
       
         opacity: 0;
         &.active {
@@ -114,18 +115,34 @@
     }
     &-3 {
       width: 16.68%;
-      top: 48px;
-      right: 313px;
+      top: 6.48%;
+      right: 42.29%;
       
       opacity: 0;
       &.active {
-        animation: zoom $animationTime $animationMode;
+        animation: gear3 $animationTime $animationMode;
+        transform: rotate(-8deg);
         opacity: 1;
+      }
+      @keyframes gear3{
+        0%{
+          opacity: 0;
+          transform: scale(3) rotate(-8deg);
+      
+        }
+        40%{
+          opacity: 1;
+        }
+        100%{
+      
+          transform: scale(1) rotate(-8deg);
+      
+        }
       }
       &_screw {
         width: 4.87%;
-        top: 92px;
-        right: 357px;
+        top: 12.43%;
+        right: 48.24%;
       
         opacity: 0;
         &.active {
@@ -136,10 +153,9 @@
     }
     &-4 {
       width: 10.6%;
-      top: 318px;
-      right: 96px;
+      top: 42.97%;
+      right: 12.97%;
 
-      
       opacity: 0;
       &.active {
         animation: zoom $animationTime $animationMode;
@@ -147,8 +163,8 @@
       }
       &_screw {
         width: 4.91%;
-        top: 340px;
-        right: 117px;
+        top: 45.94%;
+        right: 15.81%;
       
         opacity: 0;
         &.active {
@@ -159,8 +175,8 @@
     }
     &-5 {
       width: 11.3%;
-      top: 384px;
-      right: 126px;
+      top: 51.89%;
+      right: 17.02%;
 
 
       
@@ -172,8 +188,8 @@
       &_screw {
         width: 4.91%;
 
-        top: 408px;
-        right: 150px;
+        top: 55.13%;
+        right: 20.27%;
       
         opacity: 0;
         &.active {
@@ -184,8 +200,8 @@
     }
     &-6 {
       width: 17.36%;
-      top: 277px;
-      left: 192px;
+      top: 37.43%;
+      left: 25.94%;
 
       
       opacity: 0;
@@ -196,8 +212,8 @@
     }
     &-7 {
       width: 24.5%;
-      top: 175.5px;
-      left: 66.5px;
+      top: 23.71%;
+      left: 8.98%;
 
       
       opacity: 0;
@@ -208,8 +224,9 @@
     }
     &-8 {
       width: 23.04%;
-      bottom: 163.5px;
-      right: 47px;
+      bottom: 22.09%;
+      right: 6.35%;
+
 
       
       opacity: 0;
