@@ -135,14 +135,12 @@ export class Header {
     about = document.querySelector('.about')
 
     const navBtnProjects = document.querySelector('#navBtn-projects'),
-    navBtnAbout = document.querySelector('#navBtn-about')
+    navBtnAbout = document.querySelector('#navBtn-about');
 
     navBtnProjects.addEventListener('click',(e)=>{
-      e.preventDefault()
       projects.scrollIntoView()
     })
     navBtnAbout.addEventListener('click',(e)=>{
-      e.preventDefault()
       about.scrollIntoView()
     })
 

@@ -8,6 +8,7 @@ export interface IProjectCard {
   imageSrc: string;
   techs: Array<string>;
   date: string;
+  link: string;
 }
 
 export class Projects {
@@ -112,6 +113,8 @@ export class Projects {
     const btn = document.createElement('a');
     btn.href = '#';
     btn.textContent = 'Link on website';
+    btn.href = cardInfo.link
+    btn.target = '_blank'
     btn.classList.add('projects__review_btn');
 
     const snow = createSnowfall({

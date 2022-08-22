@@ -13,6 +13,7 @@ export const projectsData = {
       ],
       techs: ['html', 'css', 'js'],
       date: '2021.10.30',
+      link: 'https://kang-front-dev.github.io/momentum/',
     },
     {
       id: 'christmass',
@@ -21,6 +22,7 @@ export const projectsData = {
       imageSrc: 'assets/images/projects/christmass.png',
       extraImg: ['assets/images/projects/christmass-extra-1.png'],
       techs: ['html', 'css', 'scss', 'js', 'ts'],
+      link: 'https://kang-front-dev.github.io/christmass/App/dist/index.html',
     },
     {
       id: 'artquiz',
@@ -28,6 +30,7 @@ export const projectsData = {
       descr: `This is a SPA quiz game, different levels with random answers, progression and gallery, only in Russian.`,
       imageSrc: 'assets/images/projects/artquiz.png',
       techs: ['html', 'css', 'scss', 'js', 'ts'],
+      link: 'https://kang-front-dev.github.io/art-quiz/art-quiz/',
     },
     {
       id: 'funiro',
@@ -44,6 +47,7 @@ export const projectsData = {
       ],
       techs: ['html', 'css', 'js'],
       date: '2021.07.26',
+      link: 'https://kang-front-dev.github.io/funiro/',
     },
     {
       id: 'clocks',
@@ -51,6 +55,7 @@ export const projectsData = {
       descr: `Some future type clocks with interesting mechanics.`,
       imageSrc: 'assets/images/projects/clocks.png',
       techs: ['html', 'css', 'scss', 'js', 'ts'],
+      link: 'https://kang-front-dev.github.io/aesthetic-clocks/',
     },
     {
       id: 'pendulums',
@@ -58,6 +63,7 @@ export const projectsData = {
       descr: `These Pendulums create an interesting illusion of hypnosis, animations are written in css.You can adjust the amount.`,
       imageSrc: 'assets/images/projects/pendulums.png',
       techs: ['html', 'css', 'scss', 'js', 'ts'],
+      link: 'https://kang-front-dev.github.io/pendulums/'
     },
   ],
 };
