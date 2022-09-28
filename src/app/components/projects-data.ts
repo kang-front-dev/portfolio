@@ -15,6 +15,7 @@ export const projectsData = {
       techs: ['html', 'scss', 'ts'],
       date: '2022.9.28',
       link: 'https://ios-phone-app.netlify.app/',
+      isHot: true
     },
     {
       id: 'momentum',

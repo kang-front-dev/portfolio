@@ -82,6 +82,10 @@ $darkBrown: #3a2820;
         transform: translateY(0px);
         opacity: 1;
       }
+      & .projects__card_hot_block{
+        transform: translateY(0px);
+        opacity: 1;
+      }
     }
     & > img {
       max-width: 100%;
@@ -124,8 +128,15 @@ $darkBrown: #3a2820;
       opacity: 0;
       transition: 0.5s ease-in-out;
       transition-delay: 0.2s;
+      &_block{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
     }
     &_descr {
+      max-width: 80%;
       font-size: 14px;
       margin-top: 2px;
       font-weight: 400;
@@ -137,8 +148,33 @@ $darkBrown: #3a2820;
       transition: 0.5s ease-in-out;
       transition-delay: 0.3s;
     }
+    &_hot{
+      font-size: 16px;
+      color: white;
+      &_block{
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        padding: 6px 14px;
+        display: flex;
+        align-items: center;
+        background: rgb(0, 183, 255);
+        border-radius: 7px;
+        margin-left: 10px;
+
+        transform: translateY(80px);
+        opacity: 0;
+        transition: 0.5s ease-in-out;
+        & > i{
+          font-size: 16px;
+          color: white;
+          margin-left: 5px;
+        }
+      }
+    }
   }
 
+  
 
   &__review {
     max-width: 100%;

@@ -9,6 +9,7 @@ export interface IProjectCard {
   techs: Array<string>;
   date: string;
   link: string;
+  isHot?: boolean
 }
 
 export class Projects {
@@ -59,6 +60,12 @@ export class Projects {
       })
       card.append(textBlock)
 
+      const underline = buildElement({
+        tag: 'div',
+        class: 'projects__card_underline'
+      })
+      card.append(underline)
+      
       const number = buildElement({
         tag: 'div',
         class: 'projects__card_number',
@@ -72,12 +79,31 @@ export class Projects {
       })
       textBlock.append(textBlockRight)
 
-      const title = buildElement({
-        tag: 'h3',
-        class: 'projects__card_title',
-        textContent: item.title
-      })
-      textBlockRight.append(title)
+      if (item.isHot) {
+        const hotIconBlock = buildElement({
+          tag: 'div',
+          class: 'projects__card_hot_block',
+        })
+        card.append(hotIconBlock)
+        const hotIconText = buildElement({
+          tag: 'h4',
+          class: 'projects__card_hot',
+          textContent: 'New'
+        })
+        hotIconBlock.append(hotIconText)
+        const hotIcon = buildElement({
+          tag: 'i',
+          class: 'fas fa-fire',
+        })
+        hotIconBlock.append(hotIcon)
+      }
+        const title = buildElement({
+          tag: 'h3',
+          class: 'projects__card_title',
+          textContent: item.title
+        })
+        textBlockRight.append(title)
+
 
       const descr = buildElement({
         tag: 'p',

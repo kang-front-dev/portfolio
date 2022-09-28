@@ -25,3 +25,6 @@
 .fa-arrow-alt-left::before{
   content: '\f355';
 }
+.fa-fire::before{
+  content: '\f06d';
+}
