@@ -1,11 +1,11 @@
 export class About {
   private section;
   public parentSelector;
-  public windowHeight
+  public windowHeight;
   constructor(options) {
     this.section = document.querySelector(options.sectionSelector);
     this.parentSelector = options.sectionSelector;
-    this.windowHeight = window.innerHeight
+    this.windowHeight = window.innerHeight;
   }
   init() {
     this.setAnimation();
@@ -14,35 +14,47 @@ export class About {
     let targets = [];
 
     function setTargetText() {
-      const title = document.querySelector(`${this.parentSelector}__title`);
-      const titleUnderline = document.querySelector(
+      const titles = document.querySelectorAll(`${this.parentSelector}__title`);
+      const titleUnderlines = document.querySelectorAll(
         `${this.parentSelector}__title_underline`
       );
       const descrArr = document.querySelectorAll(
         `${this.parentSelector}__descr`
       );
-
-      targets.push(title, titleUnderline);
       descrArr.forEach((item) => {
+        targets.push(item);
+      });
+      titles.forEach((item) => {
+        targets.push(item);
+      });
+      titleUnderlines.forEach((item) => {
         targets.push(item);
       });
     }
     function setTargetTech() {
-      const techTitle = document.querySelector(
+      const techTitles = document.querySelectorAll(
         `${this.parentSelector}__tech_title`
       );
-      const techItems = document
-        .querySelector(`${this.parentSelector}__tech_list`)
-        .querySelectorAll('li');
+      const techLists = document.querySelectorAll(
+        `${this.parentSelector}__tech_list`
+      );
 
-      targets.push(techTitle);
-      techItems.forEach((item) => {
+      techLists.forEach((item) => {
+        
+        const target = item.querySelectorAll('li');
+        target.forEach(techs => {
+          targets.push(techs);
+        })
+      });
+
+      techTitles.forEach((item) => {
         targets.push(item);
       });
+
     }
     function setTargetContacts() {
-      const aboutLeft = document.querySelector('.about__left')
-      targets.push(aboutLeft)
+      const aboutLeft = document.querySelector('.about__left');
+      targets.push(aboutLeft);
       const link = document.querySelectorAll(
         `${this.parentSelector}__contacts_link`
       );
@@ -59,7 +71,8 @@ export class About {
     setTargetContacts.call(this);
 
     ////////////////////////////////
-    function animate(height) {
+    function animate() {
+      let height = window.innerHeight;
       targets.forEach((target) => {
         if (target.getBoundingClientRect().top < (height / 100) * 85) {
           target.classList.add('active');
@@ -68,9 +81,9 @@ export class About {
         }
       });
     }
-    animate(this.windowHeight);
+    animate();
     document.addEventListener('scroll', () => {
-      animate(this.windowHeight);
+      animate();
     });
   }
 }

@@ -17,35 +17,88 @@ export class Projects {
   private projectsCards;
   private projectsCardsInfo: Array<IProjectCard>;
   private projectsReviewBackplate;
-
+  private projectsWrapper
   private windowHeight;
 
   constructor(options) {
     this.projectsReview = document.querySelector('.projects__review');
     this.projectsReviewContainer =
       this.projectsReview.querySelector('.container');
-    this.projectsCards = document.querySelectorAll('.projects__card');
-
     this.projectsCardsInfo = options.cards;
     this.windowHeight = window.innerHeight;
-    
+    this.projectsWrapper = document.querySelector('.projects__wrapper')
 
     this.createProjectsReviewBackplate();
   }
   init() {
+    this.generateCards()
     this.setCardListeners();
     this.setCardsAnimation();
   }
+  generateCards(){
+    this.projectsCardsInfo.forEach((item,index) => {
+      console.log(item);
+      const cardIndex = index < 9 ? `0${index + 1}.` : `${index + 1}.`
+      const card = buildElement({
+        tag: 'div',
+        class: 'projects__card',
+        id: item.id
+      })
+      this.projectsWrapper.append(card)
+
+      const img = buildElement({
+        tag: 'img',
+        class: 'projects__card_img',
+        src: item.imageSrc
+      })
+      card.append(img)
+
+      const textBlock = buildElement({
+        tag: 'div',
+        class: 'projects__card_text'
+      })
+      card.append(textBlock)
+
+      const number = buildElement({
+        tag: 'div',
+        class: 'projects__card_number',
+        textContent: cardIndex
+      })
+      textBlock.append(number)
+
+      const textBlockRight = buildElement({
+        tag: 'div',
+        class: 'projects__card_text-right'
+      })
+      textBlock.append(textBlockRight)
+
+      const title = buildElement({
+        tag: 'h3',
+        class: 'projects__card_title',
+        textContent: item.title
+      })
+      textBlockRight.append(title)
+
+      const descr = buildElement({
+        tag: 'p',
+        class: 'projects__card_descr',
+        textContent: item.descr
+      })
+      textBlockRight.append(descr)
+    })
+    this.projectsCards = document.querySelectorAll('.projects__card')
+  }
   setCardsAnimation() {
     const sectionTitle = document.querySelector('.projects__title'),
-      cards = document.querySelectorAll('.projects__card');
+      cards = this.projectsCards;
 
     const targets = [sectionTitle];
 
     cards.forEach((item) => {
       targets.push(item);
     });
-    function animate(height) {
+    function animate() {
+      let height = window.innerHeight
       targets.forEach((target) => {
         if (target.getBoundingClientRect().top < (height / 100) * 85) {
           target.classList.add('active');
@@ -61,9 +114,9 @@ export class Projects {
         }
       });
     }
-    animate(this.windowHeight);
+    animate();
     document.addEventListener('scroll', () => {
-      animate(this.windowHeight);
+      animate();
     });
   }
   setCardListeners() {
@@ -82,6 +135,8 @@ export class Projects {
     let cardInfo;
 
     for (let i = 0; i < this.projectsCardsInfo.length; i++) {
+      console.log(this.projectsCardsInfo[i]);
+      
       if (this.projectsCardsInfo[i].id === cardId) {
         cardInfo = this.projectsCardsInfo[i];
         break;
@@ -92,9 +147,13 @@ export class Projects {
     container.classList.add('container');
     this.projectsReview.append(container);
 
+    const headwrapper = document.createElement('div')
+    headwrapper.className = 'projects__review_wrapper-head'
+    container.append(headwrapper)
+
     const leftWrapper = document.createElement('div');
     leftWrapper.classList.add('projects__review_wrapper-left');
-    container.append(leftWrapper);
+    headwrapper.append(leftWrapper);
 
     const textWrapper = document.createElement('div');
     textWrapper.classList.add('projects__review_wrapper-text');
@@ -147,7 +206,7 @@ export class Projects {
 
     const rightWrapper = document.createElement('div');
     rightWrapper.className = 'projects__review_wrapper-right';
-    container.append(rightWrapper);
+    headwrapper.append(rightWrapper);
 
     const img = document.createElement('img');
     img.src = cardInfo.imageSrc;
@@ -174,10 +233,12 @@ export class Projects {
     });
     ////////////////////////////////////////////////////
 
-    const date = document.createElement('div');
-    date.className = 'projects__review_date';
-    date.textContent = cardInfo.date;
-    rightWrapper.append(date);
+    if(window.innerWidth > 780){
+      const date = document.createElement('div');
+      date.className = 'projects__review_date';
+      date.textContent = cardInfo.date;
+      rightWrapper.append(date);
+    }
 
 
     let extraImages,
@@ -331,4 +392,27 @@ export function createSnowfall(options: ISnowInfo) {
 
   options.target.append(snow);
   return snow;
+}
+export interface IElement{
+  tag: string,
+  class: string,
+  textContent?: string,
+  id?: string,
+  src?: string,
+  href?: string
+}
+export function buildElement(options:IElement){
+  const element = document.createElement(options.tag)
+  element.className = options.class
+  if (options.textContent) {
+    element.textContent = options.textContent
+  }
+  if (options.src) {
+    (element as HTMLImageElement | HTMLVideoElement).src = options.src
+  }
+  if (options.id) {
+    element.id = options.id
+  }
+  return element
+
 }

@@ -41,13 +41,16 @@ $secColor: rgb(236, 236, 236);
 
   }
   &__left {
+    max-width: 65%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     
     padding: 70px;
     position: relative;
-
+    &.mobile{
+      display: none;
+    }
     &::before{
       content: '';
       position: absolute;

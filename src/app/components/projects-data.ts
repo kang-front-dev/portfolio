@@ -1,6 +1,22 @@
 export const projectsData = {
   cards: [
     {
+      id: 'ios-phone',
+      title: 'IOS Phone App',
+      descr: `A copy of the original iOS phone app with calls,
+       contact list, recent messages and favorites, all information
+        is stored in localStorage`,
+      imageSrc: 'assets/images/projects/ios-phone.png',
+      extraImg: [
+        'assets/images/projects/ios-phone-extra-1.png',
+        'assets/images/projects/ios-phone-extra-2.png',
+        'assets/images/projects/ios-phone-extra-3.png',
+      ],
+      techs: ['html', 'scss', 'ts'],
+      date: '2022.9.28',
+      link: 'https://ios-phone-app.netlify.app/',
+    },
+    {
       id: 'momentum',
       title: 'Momentum',
       descr: `Momentum is a SPA web aplication with weather info(OWM API), clocks, custom music player and random quotes.
@@ -63,7 +79,7 @@ export const projectsData = {
       descr: `These Pendulums create an interesting illusion of hypnosis, animations are written in css.You can adjust the amount.`,
       imageSrc: 'assets/images/projects/pendulums.png',
       techs: ['html', 'css', 'scss', 'js', 'ts'],
-      link: 'https://kang-front-dev.github.io/pendulums/'
+      link: 'https://kang-front-dev.github.io/pendulums/',
     },
   ],
 };

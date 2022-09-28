@@ -16,10 +16,7 @@ export class Header {
     this.initButton();
 
     this.setNavColorChange();
-
-    window.addEventListener('resize', () => {
-      this.header.style.height = `${window.innerHeight}px`;
-    });
+    
   }
 
   buildArt() {
@@ -32,43 +29,43 @@ export class Header {
     const parent = document.querySelector('.art');
     let allParts = 0,
       parts = 0;
-    this.generatePart(allParts, parts, totalAmount, parent, excArr);
+    // this.generatePart(allParts, parts, totalAmount, parent, excArr);
     parent.classList.add('active');
   }
-  generatePart(allParts, parts, totalAmount, parent, excArr) {
-    if (allParts < totalAmount) {
-      const artPart = document.createElement('img');
-      const artPartWrapper = document.createElement('div');
-      artPartWrapper.id = `artpart-${allParts.toString()}`;
-      artPartWrapper.className = 'art_part_wrapper';
-      artPartWrapper.append(artPart);
-      parent.append(artPartWrapper);
+  // generatePart(allParts, parts, totalAmount, parent, excArr) {
+  //   if (allParts < totalAmount) {
+  //     const artPart = document.createElement('img');
+  //     const artPartWrapper = document.createElement('div');
+  //     artPartWrapper.id = `artpart-${allParts.toString()}`;
+  //     artPartWrapper.className = 'art_part_wrapper';
+  //     artPartWrapper.append(artPart);
+  //     parent.append(artPartWrapper);
 
-      if (!this.isExc(allParts, excArr)) {
-        artPart.className = 'art_part';
-        artPart.src = `assets/images/art/Слой ${parts}.png`;
+  //     if (!this.isExc(allParts, excArr)) {
+  //       artPart.className = 'art_part';
+  //       artPart.src = `assets/images/art/Слой ${parts}.png`;
 
-        allParts += 1;
-        parts += 1;
+  //       allParts += 1;
+  //       parts += 1;
 
-        this.artPartsArr.push(allParts);
-        this.generatePart(allParts, parts, totalAmount, parent, excArr);
-      } else {
-        artPart.className = 'art_part art_part-empty';
-        allParts += 1;
-        this.generatePart(allParts, parts, totalAmount, parent, excArr);
-      }
-    } else {
-      setTimeout(() => {
-        this.runPartAnimation();
-        this.prepareTitleAnimation();
-        this.setNavAnimation();
-        // this.setHeaderBgAnimation();
-        this.initButton();
-      }, 100);
-      return;
-    }
-  }
+  //       this.artPartsArr.push(allParts);
+  //       this.generatePart(allParts, parts, totalAmount, parent, excArr);
+  //     } else {
+  //       artPart.className = 'art_part art_part-empty';
+  //       allParts += 1;
+  //       this.generatePart(allParts, parts, totalAmount, parent, excArr);
+  //     }
+  //   } else {
+  //     setTimeout(() => {
+  //       this.runPartAnimation();
+  //       this.prepareTitleAnimation();
+  //       this.setNavAnimation();
+  //       // this.setHeaderBgAnimation();
+  //       this.initButton();
+  //     }, 100);
+  //     return;
+  //   }
+  // }
   isExc(testNum, arr) {
     let isExc = false;
     arr.forEach((exc) => {
@@ -78,27 +75,27 @@ export class Header {
     });
     return isExc;
   }
-  runPartAnimation() {
-    let alreadyAnimated = [];
-    const allAmount = this.artPartsArr.length;
+  // runPartAnimation() {
+  //   let alreadyAnimated = [];
+  //   const allAmount = this.artPartsArr.length;
 
-    this.setPartAnimation(0, allAmount);
-  }
-  setPartAnimation(key, all) {
-    if (key < all - 1) {
-      const x = 200;
-      const y = 200;
-      const target = document.querySelector(
-        `#artpart-${this.artPartsArr[key] - 1}`
-      ).children[0] as HTMLElement;
+  //   this.setPartAnimation(0, allAmount);
+  // }
+  // setPartAnimation(key, all) {
+  //   if (key < all - 1) {
+  //     const x = 200;
+  //     const y = 200;
+  //     const target = document.querySelector(
+  //       `#artpart-${this.artPartsArr[key] - 1}`
+  //     ).children[0] as HTMLElement;
 
-      target.classList.add('active');
+  //     target.classList.add('active');
 
-      setTimeout(() => {
-        this.setPartAnimation(key + 1, all);
-      }, 10);
-    }
-  }
+  //     setTimeout(() => {
+  //       this.setPartAnimation(key + 1, all);
+  //     }, 10);
+  //   }
+  // }
   prepareTitleAnimation() {
     const forAnimate = [];
     const headerLeft = document.querySelector('.header__content_left');
@@ -213,13 +210,13 @@ export class Header {
     const about = document.querySelector('.about')
     
     document.addEventListener('scroll', () => {
-      if (main.getBoundingClientRect().top < 0) {
+      if (main.getBoundingClientRect().top <= 0) {
         headerNav.classList.add('light');
-      } else if (main.getBoundingClientRect().top > 0) {
+      } else if (main.getBoundingClientRect().top >= 0) {
         headerNav.classList.remove('light');
       }
       
-      if (about.getBoundingClientRect().top < 0) {
+      if (about.getBoundingClientRect().top <= 0) {
         headerNav.classList.remove('light');
       }
     });
