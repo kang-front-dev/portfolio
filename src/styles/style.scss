@@ -163,9 +163,11 @@ section {
     justify-content: center;
     
     font-weight: 400;
-    & span{
+    & a{
+      color: gray;
       font-weight: 900;
       margin-left: 5px;
+      text-decoration: underline;
     }
   }
 }
