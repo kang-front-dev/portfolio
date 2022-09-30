@@ -333,7 +333,12 @@ export class Projects {
     projectsBackplate.classList.add('projects__review-backplate');
     document.body.append(projectsBackplate);
 
-    const projectsBackplateColumns = 30;
+    let projectsBackplateColumns = 30;
+    if (window.innerWidth <= 500) {
+      projectsBackplateColumns = 10
+    }else if(window.innerWidth <= 900){
+      projectsBackplateColumns = 20
+    }
     const gap = 0;
     const projectsBackplateSize =
         (projectsBackplate.offsetWidth - (projectsBackplateColumns - 1) * gap) /

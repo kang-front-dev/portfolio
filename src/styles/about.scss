@@ -48,9 +48,7 @@ $secColor: rgb(236, 236, 236);
     
     padding: 70px;
     position: relative;
-    &.mobile{
-      display: none;
-    }
+
     &::before{
       content: '';
       position: absolute;
@@ -291,7 +289,7 @@ $secColor: rgb(236, 236, 236);
       border-radius: 5px;
 
       overflow: hidden;
-      
+      box-shadow: 3px 3px 7px #9c9c9c, -3px -3px 7px #ffffff;
       transform: translateY(40px);
       transition: 0.5s ease-in-out;
       opacity: 0;
@@ -310,7 +308,7 @@ $secColor: rgb(236, 236, 236);
         opacity: 0;
         
         width: 100%;
-        background: linear-gradient(140deg, #583d31, $mainColor);
+        background: linear-gradient(135deg,rgb(77, 77, 77),rgb(39, 39, 39));
         transition: 0.3s ease-in-out;
         z-index: 2;
       }
@@ -323,7 +321,7 @@ $secColor: rgb(236, 236, 236);
         right: 0;
 
         width: 100%;
-        background: $mainColor;
+        background: linear-gradient(140deg, #583d31, $mainColor);
         z-index: 1;
       }
       &:hover {
@@ -342,9 +340,10 @@ $secColor: rgb(236, 236, 236);
 
         position: relative;
         z-index: 3;
+        color: $secColor;
         & > i {
           font-size: 19px;
-          color: $secColor;
+          
 
           transition: 0.15s;
         }
@@ -372,7 +371,6 @@ $secColor: rgb(236, 236, 236);
         }
       }
       &_title {
-        color: $secColor;
         font-weight: 800;
         font-size: 18px;
         margin-left: 10px;

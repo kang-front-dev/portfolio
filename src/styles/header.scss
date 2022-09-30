@@ -119,6 +119,7 @@ $brown: #4b3124;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       column-gap: 50px;
+      position: relative;
     }
     &_left {
       display: flex;
@@ -203,7 +204,11 @@ $brown: #4b3124;
       & > span.bordered {
         color: transparent;
         -webkit-text-stroke: 1px $mainColor;
+        &.extra{
+          display: none;
+        }
       }
+
     }
 
     &_btn {
@@ -224,12 +229,16 @@ $brown: #4b3124;
 
       position: relative;
       overflow: hidden;
-
+      border: 2px $secColor solid;
+      background: $secColor;
       box-shadow: 3px 3px 7px #bebebe, -3px -3px 7px #ffffff;
       animation: unPress 0.15s ease-in-out;
 
       transition: 0.2s;
 
+      &:hover{
+        border: 2px $mainColor solid;
+      }
       &.active {
         animation: slide-from-bottom 0.7s ease-in-out;
         opacity: 1;

@@ -73,8 +73,12 @@ export class About {
     ////////////////////////////////
     function animate() {
       let height = window.innerHeight;
+      let appearDistance = 85
+      if (window.innerWidth <= 800) {
+        appearDistance = 93
+      }
       targets.forEach((target) => {
-        if (target.getBoundingClientRect().top < (height / 100) * 85) {
+        if (target.getBoundingClientRect().top < (height / 100) * appearDistance) {
           target.classList.add('active');
         } else if (target.getBoundingClientRect().top > height) {
           target.classList.remove('active');

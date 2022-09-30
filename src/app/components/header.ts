@@ -106,12 +106,20 @@ export class Header {
     const title = document
       .querySelector('.header__content_title')
       .querySelectorAll('span');
+      console.log(title,'title');
+      
     title.forEach((item) => {
       forAnimate.push(item);
     });
     const btn = document.querySelector('.header__content_btn');
     forAnimate.push(btn);
-    this.setTitleAnimation(forAnimate, forAnimate.length, 0);
+    if (window.innerWidth <= 800) {
+      setTimeout(() => {
+        this.setTitleAnimation(forAnimate, forAnimate.length, 0);
+      }, 2000);
+    }else{
+      this.setTitleAnimation(forAnimate, forAnimate.length, 0);
+    }
   }
   setTitleAnimation(targets, amount, count) {
     if (count < amount) {

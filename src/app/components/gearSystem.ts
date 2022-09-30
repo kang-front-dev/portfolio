@@ -29,9 +29,9 @@ export class GearSystem {
 
     const gearSystem = document.querySelector('.gearSystem') as HTMLElement;
     gearSystem.style.height = gearSystem.offsetWidth + 'px';
-    window.addEventListener('resize', ()=>{
+    window.addEventListener('resize', () => {
       gearSystem.style.height = gearSystem.offsetWidth + 'px';
-    })
+    });
 
     const width = 740;
 
@@ -43,6 +43,7 @@ export class GearSystem {
     }
   }
   init() {
+
     this.runAnimation();
 
     let gears = [];
@@ -80,6 +81,7 @@ export class GearSystem {
   animate(key, targetsArr, timeSpace) {
     if (key < targetsArr.length) {
       addClass(targetsArr[key], 'active');
+
       targetsArr[key].style.zIndex = key + 1;
       setTimeout(() => {
         this.animate(key + 1, targetsArr, timeSpace);
@@ -87,31 +89,34 @@ export class GearSystem {
     } else {
       setTimeout(() => {
         this.initSpin();
+        if (window.innerWidth <= 800) {
+          const gearWrapper = document.querySelector('.gearSystem_wrapper')
+          gearWrapper.classList.add('active')
+        }
       }, 300);
     }
   }
 
   initSpin() {
     let spinDegree = 0;
-    let spinDegreeStep = 0.1
+    let spinDegreeStep = 0.1;
     document.addEventListener('scroll', (e) => {
       spinDegree += 1;
     });
-    let twisted = false
+    let twisted = false;
     setInterval(() => {
-
-      if(!twisted){
-        if(spinDegreeStep < 1){
+      if (!twisted) {
+        if (spinDegreeStep < 1) {
           spinDegreeStep += 0.01;
-          spinDegree += spinDegreeStep
-        }else{
-          twisted = true
+          spinDegree += spinDegreeStep;
+        } else {
+          twisted = true;
         }
-      }else{
-        spinDegreeStep = 1
-        spinDegree += spinDegreeStep
+      } else {
+        spinDegreeStep = 1;
+        spinDegree += spinDegreeStep;
       }
-      
+
       this.makeSpin(spinDegree);
     }, 40);
   }

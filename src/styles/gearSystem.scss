@@ -1,3 +1,5 @@
+$animationTime: 0.4s;
+$animationMode: ease;
 .gearSystem {
   width: 100%;
 
@@ -18,8 +20,8 @@
     }
   }
 
-  $animationTime: 0.4s;
-  $animationMode: ease;
+
+
   &_base {
     $opacity: 1;
 
@@ -31,6 +33,7 @@
 
     opacity: 0;
     transition: 0.5s ease-in-out;
+    
     &.active {
       opacity: $opacity;
     }
@@ -44,6 +47,7 @@
         animation: zoom $animationTime $animationMode;
         opacity: 7;
       }
+
     }
     &-right {
       width: 79.68%;
@@ -55,6 +59,7 @@
         animation: zoom $animationTime $animationMode;
         opacity: 1;
       }
+
     }
     &-bottom {
       width: 61.35%;
