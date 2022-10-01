@@ -3,7 +3,7 @@ export const projectsData = {
     {
       id: 'ios-phone',
       title: 'IOS Phone App',
-      descr: `A copy of the original iOS phone app with calls,
+      descr: `A copy of the original IOS phone app with calls,
        contact list, recent messages and favorites, all information
         is stored in localStorage`,
       imageSrc: 'assets/images/projects/ios-phone.png',
