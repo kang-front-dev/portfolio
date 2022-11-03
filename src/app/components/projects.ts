@@ -38,7 +38,7 @@ export class Projects {
   }
   generateCards(){
     this.projectsCardsInfo.forEach((item,index) => {
-      console.log(item);
+
       const cardIndex = index < 9 ? `0${index + 1}.` : `${index + 1}.`
       const card = buildElement({
         tag: 'div',
@@ -161,8 +161,7 @@ export class Projects {
     let cardInfo;
 
     for (let i = 0; i < this.projectsCardsInfo.length; i++) {
-      console.log(this.projectsCardsInfo[i]);
-      
+
       if (this.projectsCardsInfo[i].id === cardId) {
         cardInfo = this.projectsCardsInfo[i];
         break;

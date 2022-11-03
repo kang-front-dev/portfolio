@@ -35,9 +35,6 @@ export class GearSystem {
 
     const width = 740;
 
-    console.log(calculate(width, 70));
-    console.log(calculate(width, 137));
-
     function calculate(width, pxValue) {
       return pxValue / (width / 100);
     }

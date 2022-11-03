@@ -106,8 +106,7 @@ export class Header {
     const title = document
       .querySelector('.header__content_title')
       .querySelectorAll('span');
-      console.log(title,'title');
-      
+
     title.forEach((item) => {
       forAnimate.push(item);
     });
