@@ -333,20 +333,24 @@ export class Projects {
     document.body.append(projectsBackplate);
 
     let projectsBackplateColumns = 30;
-    if (window.innerWidth <= 500) {
-      projectsBackplateColumns = 10
-    }else if(window.innerWidth <= 900){
+    if(window.innerWidth < 500){
+      projectsBackplateColumns = 12
+    }else if(window.innerWidth < 700){
+      projectsBackplateColumns = 15
+    }else if(window.innerWidth < 1200){
       projectsBackplateColumns = 20
     }
-    const gap = 0;
-    const projectsBackplateSize =
-        (projectsBackplate.offsetWidth - (projectsBackplateColumns - 1) * gap) /
+    let projectsBackplateSize =
+        projectsBackplate.offsetWidth /
         projectsBackplateColumns,
-      projectsBackplateRows = Math.ceil(
+      projectsBackplateRows = Math.round(
         (window.innerHeight - 67) / projectsBackplateSize
       );
+      projectsBackplateRows = projectsBackplateRows + projectsBackplateColumns
     
-
+    console.log('projectsBackplateColumns',projectsBackplateColumns);
+    console.log('projectsBackplateRows',projectsBackplateRows);
+    
     this.projectsReviewBackplate.style.gridTemplateColumns = `repeat(${projectsBackplateColumns},${projectsBackplateSize}px)`;
     this.projectsReviewBackplate.style.gridAutoRows = `${projectsBackplateSize}px`;
 
@@ -363,7 +367,10 @@ export class Projects {
   }
 
   animateProjectsReviewBackplatePart(amount, key) {
-    if (key < amount - 1) {
+    console.log('key',key);
+    console.log('amount',amount);
+    
+    if (key < amount - 6) {
       for (let i = 0; i < 5; i++) {
         const target = document.querySelector(
           `#projects-backplate-part-${key + i}`
