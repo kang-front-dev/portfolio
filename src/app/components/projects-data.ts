@@ -67,6 +67,15 @@ export const projectsData = {
       link: 'https://kang-front-dev.github.io/funiro/',
     },
     {
+      id: 'infinity-road',
+      title: 'Infinity Road',
+      descr: `Endless road construction built on React.js`,
+      videoSrc: `assets/video/video.mp4`,
+      techs: ['html', 'scss', 'js', 'ts'],
+      date: '2022.11.11',
+      link: 'https://infinity-road.netlify.app/',
+    },
+    {
       id: 'clocks',
       title: 'Slice clocks',
       descr: `Some future type clocks with interesting mechanics.`,

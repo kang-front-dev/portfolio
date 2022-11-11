@@ -5,11 +5,12 @@ export interface IProjectCard {
   id: string;
   title: string;
   descr: string;
-  imageSrc: string;
+  imageSrc?: string;
+  videoSrc?: string;
   techs: Array<string>;
   date: string;
   link: string;
-  isHot?: boolean
+  isHot?: boolean;
 }
 
 export class Projects {
@@ -18,7 +19,7 @@ export class Projects {
   private projectsCards;
   private projectsCardsInfo: Array<IProjectCard>;
   private projectsReviewBackplate;
-  private projectsWrapper
+  private projectsWrapper;
   private windowHeight;
 
   constructor(options) {
@@ -27,92 +28,104 @@ export class Projects {
       this.projectsReview.querySelector('.container');
     this.projectsCardsInfo = options.cards;
     this.windowHeight = window.innerHeight;
-    this.projectsWrapper = document.querySelector('.projects__wrapper')
+    this.projectsWrapper = document.querySelector('.projects__wrapper');
 
     this.createProjectsReviewBackplate();
   }
   init() {
-    this.generateCards()
+    this.generateCards();
     this.setCardListeners();
     this.setCardsAnimation();
   }
-  generateCards(){
-    this.projectsCardsInfo.forEach((item,index) => {
-
-      const cardIndex = index < 9 ? `0${index + 1}.` : `${index + 1}.`
+  generateCards() {
+    this.projectsCardsInfo.forEach((item, index) => {
+      const cardIndex = index < 9 ? `0${index + 1}.` : `${index + 1}.`;
       const card = buildElement({
         tag: 'div',
         class: 'projects__card',
-        id: item.id
-      })
-      this.projectsWrapper.append(card)
+        id: item.id,
+      });
+      this.projectsWrapper.append(card);
 
-      const img = buildElement({
-        tag: 'img',
-        class: 'projects__card_img',
-        src: item.imageSrc
-      })
-      card.append(img)
+      if (item.imageSrc) {
+        const img = buildElement({
+          tag: 'img',
+          class: 'projects__card_img',
+          src: item.imageSrc,
+        });
+        card.append(img);
+      } else if (item.videoSrc) {
+        const video = buildElement({
+          tag: 'video',
+          class: 'projects__card_img',
+          src: `./${item.videoSrc}`,
+        });
+        (video as HTMLVideoElement).muted = true;
+        video.setAttribute('muted', 'muted');
+        video.setAttribute('autoplay', '');
+        video.setAttribute('loop', '');
+
+        card.append(video);
+      }
 
       const textBlock = buildElement({
         tag: 'div',
-        class: 'projects__card_text'
-      })
-      card.append(textBlock)
+        class: 'projects__card_text',
+      });
+      card.append(textBlock);
 
       const underline = buildElement({
         tag: 'div',
-        class: 'projects__card_underline'
-      })
-      card.append(underline)
-      
+        class: 'projects__card_underline',
+      });
+      card.append(underline);
+
       const number = buildElement({
         tag: 'div',
         class: 'projects__card_number',
-        textContent: cardIndex
-      })
-      textBlock.append(number)
+        textContent: cardIndex,
+      });
+      textBlock.append(number);
 
       const textBlockRight = buildElement({
         tag: 'div',
-        class: 'projects__card_text-right'
-      })
-      textBlock.append(textBlockRight)
+        class: 'projects__card_text-right',
+      });
+      textBlock.append(textBlockRight);
 
       if (item.isHot) {
         const hotIconBlock = buildElement({
           tag: 'div',
           class: 'projects__card_hot_block',
-        })
-        card.append(hotIconBlock)
+        });
+        card.append(hotIconBlock);
         const hotIconText = buildElement({
           tag: 'h4',
           class: 'projects__card_hot',
-          textContent: 'New'
-        })
-        hotIconBlock.append(hotIconText)
+          textContent: 'New',
+        });
+        hotIconBlock.append(hotIconText);
         const hotIcon = buildElement({
           tag: 'i',
           class: 'fas fa-fire',
-        })
-        hotIconBlock.append(hotIcon)
+        });
+        hotIconBlock.append(hotIcon);
       }
-        const title = buildElement({
-          tag: 'h3',
-          class: 'projects__card_title',
-          textContent: item.title
-        })
-        textBlockRight.append(title)
-
+      const title = buildElement({
+        tag: 'h3',
+        class: 'projects__card_title',
+        textContent: item.title,
+      });
+      textBlockRight.append(title);
 
       const descr = buildElement({
         tag: 'p',
         class: 'projects__card_descr',
-        textContent: item.descr
-      })
-      textBlockRight.append(descr)
-    })
-    this.projectsCards = document.querySelectorAll('.projects__card')
+        textContent: item.descr,
+      });
+      textBlockRight.append(descr);
+    });
+    this.projectsCards = document.querySelectorAll('.projects__card');
   }
   setCardsAnimation() {
     const sectionTitle = document.querySelector('.projects__title'),
@@ -124,7 +137,7 @@ export class Projects {
       targets.push(item);
     });
     function animate() {
-      let height = window.innerHeight
+      let height = window.innerHeight;
       targets.forEach((target) => {
         if (target.getBoundingClientRect().top < (height / 100) * 85) {
           target.classList.add('active');
@@ -161,7 +174,6 @@ export class Projects {
     let cardInfo;
 
     for (let i = 0; i < this.projectsCardsInfo.length; i++) {
-
       if (this.projectsCardsInfo[i].id === cardId) {
         cardInfo = this.projectsCardsInfo[i];
         break;
@@ -172,9 +184,9 @@ export class Projects {
     container.classList.add('container');
     this.projectsReview.append(container);
 
-    const headwrapper = document.createElement('div')
-    headwrapper.className = 'projects__review_wrapper-head'
-    container.append(headwrapper)
+    const headwrapper = document.createElement('div');
+    headwrapper.className = 'projects__review_wrapper-head';
+    container.append(headwrapper);
 
     const leftWrapper = document.createElement('div');
     leftWrapper.classList.add('projects__review_wrapper-left');
@@ -197,8 +209,8 @@ export class Projects {
     const btn = document.createElement('a');
     btn.href = '#';
     btn.textContent = 'Link on website';
-    btn.href = cardInfo.link
-    btn.target = '_blank'
+    btn.href = cardInfo.link;
+    btn.target = '_blank';
     btn.classList.add('projects__review_btn');
 
     const snow = createSnowfall({
@@ -233,10 +245,23 @@ export class Projects {
     rightWrapper.className = 'projects__review_wrapper-right';
     headwrapper.append(rightWrapper);
 
-    const img = document.createElement('img');
-    img.src = cardInfo.imageSrc;
-    img.classList.add('projects__review_img');
-    rightWrapper.append(img);
+    let img;
+    if (cardInfo.imageSrc) {
+      img = document.createElement('img');
+      img.src = cardInfo.imageSrc;
+      img.classList.add('projects__review_img');
+      rightWrapper.append(img);
+    } else if (cardInfo.videoSrc) {
+      img = document.createElement('video');
+      img.src = cardInfo.videoSrc;
+      img.muted = true
+      img.autoplay = true
+      img.setAttribute('muted','muted')
+      img.setAttribute('autoplay','')
+      img.setAttribute('loop','')
+      img.classList.add('projects__review_img');
+      rightWrapper.append(img);
+    }
 
     ////////////////////////////TECHS///////////////////
     const techWrapper = document.createElement('div');
@@ -248,7 +273,6 @@ export class Projects {
       if (index === cardInfo.techs.length - 1) {
         square = false;
       }
-      
 
       const tech = new Technology({
         techName: techName,
@@ -258,33 +282,24 @@ export class Projects {
     });
     ////////////////////////////////////////////////////
 
-    if(window.innerWidth > 780){
+    if (window.innerWidth > 780) {
       const date = document.createElement('div');
       date.className = 'projects__review_date';
       date.textContent = cardInfo.date;
       rightWrapper.append(date);
     }
 
-
-    let extraImages,
-    scrollIcon
-    let animationTargets = [
-      title,
-      titleUnderline,
-      descr,
-      backBtn,
-      img,
-
-    ]
+    let extraImages, scrollIcon;
+    let animationTargets = [title, titleUnderline, descr, backBtn, img];
 
     if (cardInfo.hasOwnProperty('extraImg') && cardInfo.extraImg.length > 0) {
       scrollIcon = document.createElement('div');
       scrollIcon.className = 'scroll_btn';
       container.append(scrollIcon);
-      
+
       extraImages = generateExtraImages();
 
-      animationTargets.push(scrollIcon,extraImages)
+      animationTargets.push(scrollIcon, extraImages);
     }
     this.projectsReviewBackplate.classList.add('active');
     this.animateProjectsReviewBackplatePart(
@@ -295,8 +310,6 @@ export class Projects {
       this.projectsReview.classList.add('active');
 
       animationTargets.forEach((item) => {
-
-        
         if (!Array.isArray(item)) {
           item.classList.add('active');
         } else {
@@ -333,24 +346,23 @@ export class Projects {
     document.body.append(projectsBackplate);
 
     let projectsBackplateColumns = 30;
-    if(window.innerWidth < 500){
-      projectsBackplateColumns = 12
-    }else if(window.innerWidth < 700){
-      projectsBackplateColumns = 15
-    }else if(window.innerWidth < 1200){
-      projectsBackplateColumns = 20
+    if (window.innerWidth < 500) {
+      projectsBackplateColumns = 12;
+    } else if (window.innerWidth < 700) {
+      projectsBackplateColumns = 15;
+    } else if (window.innerWidth < 1200) {
+      projectsBackplateColumns = 20;
     }
     let projectsBackplateSize =
-        projectsBackplate.offsetWidth /
-        projectsBackplateColumns,
+        projectsBackplate.offsetWidth / projectsBackplateColumns,
       projectsBackplateRows = Math.round(
         (window.innerHeight - 67) / projectsBackplateSize
       );
-      projectsBackplateRows = projectsBackplateRows + projectsBackplateColumns
-    
-    console.log('projectsBackplateColumns',projectsBackplateColumns);
-    console.log('projectsBackplateRows',projectsBackplateRows);
-    
+    projectsBackplateRows = projectsBackplateRows + projectsBackplateColumns;
+
+    console.log('projectsBackplateColumns', projectsBackplateColumns);
+    console.log('projectsBackplateRows', projectsBackplateRows);
+
     this.projectsReviewBackplate.style.gridTemplateColumns = `repeat(${projectsBackplateColumns},${projectsBackplateSize}px)`;
     this.projectsReviewBackplate.style.gridAutoRows = `${projectsBackplateSize}px`;
 
@@ -367,9 +379,9 @@ export class Projects {
   }
 
   animateProjectsReviewBackplatePart(amount, key) {
-    console.log('key',key);
-    console.log('amount',amount);
-    
+    console.log('key', key);
+    console.log('amount', amount);
+
     if (key < amount - 6) {
       for (let i = 0; i < 5; i++) {
         const target = document.querySelector(
@@ -430,26 +442,25 @@ export function createSnowfall(options: ISnowInfo) {
   options.target.append(snow);
   return snow;
 }
-export interface IElement{
-  tag: string,
-  class: string,
-  textContent?: string,
-  id?: string,
-  src?: string,
-  href?: string
+export interface IElement {
+  tag: string;
+  class: string;
+  textContent?: string;
+  id?: string;
+  src?: string;
+  href?: string;
 }
-export function buildElement(options:IElement){
-  const element = document.createElement(options.tag)
-  element.className = options.class
+export function buildElement(options: IElement) {
+  const element = document.createElement(options.tag);
+  element.className = options.class;
   if (options.textContent) {
-    element.textContent = options.textContent
+    element.textContent = options.textContent;
   }
   if (options.src) {
-    (element as HTMLImageElement | HTMLVideoElement).src = options.src
+    (element as HTMLImageElement | HTMLVideoElement).src = options.src;
   }
   if (options.id) {
-    element.id = options.id
+    element.id = options.id;
   }
-  return element
-
+  return element;
 }
