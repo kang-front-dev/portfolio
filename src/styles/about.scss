@@ -41,7 +41,6 @@ $secColor: rgb(236, 236, 236);
 
   }
   &__left {
-    max-width: 65%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -179,6 +178,7 @@ $secColor: rgb(236, 236, 236);
   }
 
   &__descr {
+    max-width: 520px;
     margin-top: 10px;
     font-weight: 400;
     font-size: 20px;

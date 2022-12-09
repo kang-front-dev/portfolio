@@ -97,12 +97,6 @@ $brown: #4b3124;
         opacity: 0;
         transition: 0.15s ease-in-out;
       }
-      &:hover {
-        color: $secColor;
-        &::after {
-          opacity: 1;
-        }
-      }
     }
   }
 
