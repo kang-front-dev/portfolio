@@ -35,9 +35,6 @@ $brown: #4b3124;
     &.light {
       & .header__nav_link {
         color: $secColor;
-        &:hover{
-          color: $mainColor;
-        }
         &::after {
           background: $secColor;
         }

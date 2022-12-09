@@ -213,15 +213,15 @@ export class Projects {
     btn.target = '_blank';
     btn.classList.add('projects__review_btn');
 
-    const snow = createSnowfall({
-      minPartSize: 4,
-      maxPartSize: 8,
-      minAnimationTime: 1500,
-      maxAnimationTime: 3000,
-      amount: 20,
-      target: btn,
-      id: 'btn-snowfall',
-    });
+    // const snow = createSnowfall({
+    //   minPartSize: 4,
+    //   maxPartSize: 8,
+    //   minAnimationTime: 1500,
+    //   maxAnimationTime: 3000,
+    //   amount: 20,
+    //   target: btn,
+    //   id: 'btn-snowfall',
+    // });
 
     leftWrapper.append(textWrapper, btn);
 
@@ -254,11 +254,11 @@ export class Projects {
     } else if (cardInfo.videoSrc) {
       img = document.createElement('video');
       img.src = cardInfo.videoSrc;
-      img.muted = true
-      img.autoplay = true
-      img.setAttribute('muted','muted')
-      img.setAttribute('autoplay','')
-      img.setAttribute('loop','')
+      img.muted = true;
+      img.autoplay = true;
+      img.setAttribute('muted', 'muted');
+      img.setAttribute('autoplay', '');
+      img.setAttribute('loop', '');
       img.classList.add('projects__review_img');
       rightWrapper.append(img);
     }
@@ -346,6 +346,7 @@ export class Projects {
     document.body.append(projectsBackplate);
 
     let projectsBackplateColumns = 30;
+
     if (window.innerWidth < 500) {
       projectsBackplateColumns = 12;
     } else if (window.innerWidth < 700) {
@@ -353,15 +354,12 @@ export class Projects {
     } else if (window.innerWidth < 1200) {
       projectsBackplateColumns = 20;
     }
+    
     let projectsBackplateSize =
         projectsBackplate.offsetWidth / projectsBackplateColumns,
       projectsBackplateRows = Math.round(
         (window.innerHeight - 67) / projectsBackplateSize
       );
-    projectsBackplateRows = projectsBackplateRows + projectsBackplateColumns;
-
-    console.log('projectsBackplateColumns', projectsBackplateColumns);
-    console.log('projectsBackplateRows', projectsBackplateRows);
 
     this.projectsReviewBackplate.style.gridTemplateColumns = `repeat(${projectsBackplateColumns},${projectsBackplateSize}px)`;
     this.projectsReviewBackplate.style.gridAutoRows = `${projectsBackplateSize}px`;
@@ -379,8 +377,6 @@ export class Projects {
   }
 
   animateProjectsReviewBackplatePart(amount, key) {
-    console.log('key', key);
-    console.log('amount', amount);
 
     if (key < amount - 6) {
       for (let i = 0; i < 5; i++) {
