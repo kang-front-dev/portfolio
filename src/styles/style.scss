@@ -1,9 +1,16 @@
+@import url('./about.scss');
+@import url('./gearSystem.scss');
+@import url('./header.scss');
+@import url('./main.scss');
+@import url('./projects.scss');
+@import url('./projects-techs.scss');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
 .container {
@@ -26,6 +33,10 @@ $mainColor: rgb(20, 20, 20);
 $darkBrown: #3a2820;
 $secColor: rgb(236, 236, 236);
 
+.App {
+  width: 100%;
+  height: 100%;
+}
 .global__wrapper {
   width: 100%;
   display: flex;
@@ -34,7 +45,7 @@ $secColor: rgb(236, 236, 236);
   position: relative;
   overflow: hidden;
 }
-.email-btn{
+.email-btn {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -49,40 +60,37 @@ $secColor: rgb(236, 236, 236);
   border-radius: 50%;
   border: 2px $secColor solid;
   cursor: pointer;
-  &-wrapper{
+  &-wrapper {
     position: relative;
-    & > i{
+    & > i {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
       color: $secColor;
       font-size: 24px;
     }
-    & > .fa-envelope-open{
+    & > .fa-envelope-open {
       opacity: 0;
       transition: 0.2s;
     }
-    & > .fa-envelope{
+    & > .fa-envelope {
       opacity: 1;
       transition: 0.2s;
-      &:hover{
+      &:hover {
         opacity: 0;
-        .fa-envelope-open{
+        .fa-envelope-open {
           opacity: 1;
         }
       }
     }
   }
-
 }
 
-
-body{
+body {
   position: relative;
-  &.active{
+  &.active {
     overflow: hidden;
-
   }
 }
 
@@ -118,7 +126,7 @@ body{
     animation: travel 3.5s ease-in-out infinite;
   }
 
-  &_wrapper{
+  &_wrapper {
     position: relative;
     bottom: 0;
     left: 50%;
@@ -152,18 +160,18 @@ section {
   padding: 100px 0;
 }
 
-.footer{
+.footer {
   width: 100%;
   background: #000000;
   padding: 20px;
-  &__descr{
+  &__descr {
     font-family: $mainFont;
     color: gray;
     display: flex;
     justify-content: center;
-    
+
     font-weight: 400;
-    & a{
+    & a {
       color: gray;
       font-weight: 900;
       margin-left: 5px;
@@ -172,9 +180,7 @@ section {
   }
 }
 
-
-
-.snow{
+.snow {
   width: 100%;
   position: absolute;
   top: 0;
@@ -182,22 +188,21 @@ section {
   right: 0;
   bottom: 0;
   overflow: hidden;
-  &__wrapper{
+  &__wrapper {
     width: 100%;
     height: 100%;
     position: relative;
   }
-  &__particle{
+  &__particle {
     position: absolute;
     background: rgba(255, 255, 255, 0.76);
     border-radius: 50%;
   }
-  @keyframes snowfall{
-    0%{
+  @keyframes snowfall {
+    0% {
       transform: translateY(-10px);
-
     }
-    100%{
+    100% {
       transform: translateY(60px);
     }
   }
