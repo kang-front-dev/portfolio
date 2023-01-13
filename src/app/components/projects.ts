@@ -18,19 +18,14 @@ export class Projects {
   private projectsReviewContainer;
   private projectsCards;
   private projectsCardsInfo: Array<IProjectCard>;
-  private projectsReviewBackplate;
   private projectsWrapper;
-  private windowHeight;
 
   constructor(options) {
     this.projectsReview = document.querySelector('.projects__review');
     this.projectsReviewContainer =
       this.projectsReview.querySelector('.container');
     this.projectsCardsInfo = options.cards;
-    this.windowHeight = window.innerHeight;
     this.projectsWrapper = document.querySelector('.projects__wrapper');
-
-    this.createProjectsReviewBackplate();
   }
   init() {
     this.generateCards();
@@ -213,27 +208,15 @@ export class Projects {
     btn.target = '_blank';
     btn.classList.add('projects__review_btn');
 
-    // const snow = createSnowfall({
-    //   minPartSize: 4,
-    //   maxPartSize: 8,
-    //   minAnimationTime: 1500,
-    //   maxAnimationTime: 3000,
-    //   amount: 20,
-    //   target: btn,
-    //   id: 'btn-snowfall',
-    // });
-
     leftWrapper.append(textWrapper, btn);
 
     const backBtn = document.createElement('i');
     backBtn.className = 'projects__review_btn-back fas fa-arrow-alt-left';
     backBtn.addEventListener('click', () => {
       this.projectsReview.classList.remove('active');
-      this.resetProjectsReviewBackplatePart();
 
       document.body.classList.remove('active');
 
-      this.projectsReviewBackplate.classList.remove('active');
       [title, titleUnderline, descr, btn, backBtn, img].forEach((item) => {
         item.classList.remove('active');
       });
@@ -301,27 +284,21 @@ export class Projects {
 
       animationTargets.push(scrollIcon, extraImages);
     }
-    this.projectsReviewBackplate.classList.add('active');
-    this.animateProjectsReviewBackplatePart(
-      this.projectsReviewBackplatePartsAmount,
-      0
-    );
-    setTimeout(() => {
-      this.projectsReview.classList.add('active');
 
-      animationTargets.forEach((item) => {
-        if (!Array.isArray(item)) {
-          item.classList.add('active');
-        } else {
-          item.forEach((subItem) => {
-            subItem.classList.add('active');
-          });
-        }
-      });
-      setTimeout(() => {
-        btn.classList.add('active');
-      }, 300);
-    }, 1000);
+    this.projectsReview.classList.add('active');
+
+    animationTargets.forEach((item) => {
+      if (!Array.isArray(item)) {
+        item.classList.add('active');
+      } else {
+        item.forEach((subItem) => {
+          subItem.classList.add('active');
+        });
+      }
+    });
+    setTimeout(() => {
+      btn.classList.add('active');
+    }, 300);
 
     function generateExtraImages() {
       let arr = [];
@@ -335,66 +312,6 @@ export class Projects {
       });
       return arr;
     }
-  }
-
-  private projectsReviewBackplatePartsAmount;
-
-  createProjectsReviewBackplate() {
-    const projectsBackplate = document.createElement('div');
-    this.projectsReviewBackplate = projectsBackplate;
-    projectsBackplate.classList.add('projects__review-backplate');
-    document.body.append(projectsBackplate);
-
-    let projectsBackplateColumns = 30;
-
-    if (window.innerWidth < 500) {
-      projectsBackplateColumns = 12;
-    } else if (window.innerWidth < 700) {
-      projectsBackplateColumns = 15;
-    } else if (window.innerWidth < 1200) {
-      projectsBackplateColumns = 20;
-    }
-    
-    let projectsBackplateSize =
-        projectsBackplate.offsetWidth / projectsBackplateColumns,
-      projectsBackplateRows = Math.round(
-        (window.innerHeight - 67) / projectsBackplateSize
-      );
-
-    this.projectsReviewBackplate.style.gridTemplateColumns = `repeat(${projectsBackplateColumns},${projectsBackplateSize}px)`;
-    this.projectsReviewBackplate.style.gridAutoRows = `${projectsBackplateSize}px`;
-
-    const partsAmount = projectsBackplateRows * projectsBackplateColumns;
-    this.projectsReviewBackplatePartsAmount = partsAmount;
-    for (let i = 0; i < partsAmount; i++) {
-      const part = document.createElement('div');
-      part.classList.add('projects__review-backplate_part');
-      part.id = `projects-backplate-part-${i}`;
-      projectsBackplate.append(part);
-    }
-
-    projectsBackplate.classList.add('enabled');
-  }
-
-  animateProjectsReviewBackplatePart(amount, key) {
-
-    if (key < amount - 6) {
-      for (let i = 0; i < 5; i++) {
-        const target = document.querySelector(
-          `#projects-backplate-part-${key + i}`
-        );
-        target.classList.add('active');
-      }
-      setTimeout(() => {
-        this.animateProjectsReviewBackplatePart(amount, key + 5);
-      }, 2);
-    }
-  }
-  resetProjectsReviewBackplatePart() {
-    const parts = document.querySelectorAll('.projects__review-backplate_part');
-    parts.forEach((item) => {
-      item.classList.remove('active');
-    });
   }
 }
 export interface ISnowInfo {
