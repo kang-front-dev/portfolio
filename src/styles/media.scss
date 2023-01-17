@@ -357,6 +357,11 @@ $secColor: rgb(236, 236, 236);
         font-size: 37px;
         line-height: 37px;
       }
+      &_img{
+        &-extra{
+          margin-top: 20px;
+        }
+      }
     }
   }
 }

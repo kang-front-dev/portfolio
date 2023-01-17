@@ -106,6 +106,7 @@ export class Projects {
         });
         hotIconBlock.append(hotIcon);
       }
+
       const title = buildElement({
         tag: 'h3',
         class: 'projects__card_title',
@@ -201,14 +202,24 @@ export class Projects {
     descr.classList.add('projects__review_descr');
     textWrapper.append(title, titleUnderline, descr);
 
-    const btn = document.createElement('a');
-    btn.href = '#';
-    btn.textContent = 'Link on website';
-    btn.href = cardInfo.link;
-    btn.target = '_blank';
-    btn.classList.add('projects__review_btn');
+    const btnBlock = document.createElement('div');
+    btnBlock.className = 'projects__review_btn_block';
 
-    leftWrapper.append(textWrapper, btn);
+    const btnLink = document.createElement('a');
+    btnLink.textContent = 'Link on website';
+    btnLink.href = cardInfo.link;
+    btnLink.target = '_blank';
+    btnLink.classList.add('projects__review_btn');
+
+    const btnGithub = document.createElement('a');
+    btnGithub.textContent = 'Github';
+    btnGithub.href = cardInfo.link;
+    btnGithub.target = '_blank';
+    btnGithub.classList.add('projects__review_btn');
+
+    btnBlock.append(btnLink, btnGithub);
+
+    leftWrapper.append(textWrapper, btnBlock);
 
     const backBtn = document.createElement('i');
     backBtn.className = 'projects__review_btn-back fas fa-arrow-alt-left';
@@ -217,7 +228,7 @@ export class Projects {
 
       document.body.classList.remove('active');
 
-      [title, titleUnderline, descr, btn, backBtn, img].forEach((item) => {
+      [title, titleUnderline, descr, btnBlock, backBtn, img].forEach((item) => {
         item.classList.remove('active');
       });
       container.remove();
@@ -297,7 +308,7 @@ export class Projects {
       }
     });
     setTimeout(() => {
-      btn.classList.add('active');
+      btnBlock.classList.add('active');
     }, 300);
 
     function generateExtraImages() {
@@ -314,47 +325,47 @@ export class Projects {
     }
   }
 }
-export interface ISnowInfo {
-  minPartSize: number;
-  maxPartSize: number;
-  minAnimationTime: number;
-  maxAnimationTime: number;
-  amount: number;
-  target: HTMLElement;
-  id: string;
-}
-export function createSnowfall(options: ISnowInfo) {
-  const snow = document.createElement('div');
-  snow.classList.add('snow');
-  snow.id = options.id;
+// export interface ISnowInfo {
+//   minPartSize: number;
+//   maxPartSize: number;
+//   minAnimationTime: number;
+//   maxAnimationTime: number;
+//   amount: number;
+//   target: HTMLElement;
+//   id: string;
+// }
+// export function createSnowfall(options: ISnowInfo) {
+//   const snow = document.createElement('div');
+//   snow.classList.add('snow');
+//   snow.id = options.id;
 
-  const snowWrapper = document.createElement('div');
-  snowWrapper.classList.add('snow__wrapper');
-  snow.append(snowWrapper);
+//   const snowWrapper = document.createElement('div');
+//   snowWrapper.classList.add('snow__wrapper');
+//   snow.append(snowWrapper);
 
-  for (let i = 0; i < options.amount; i++) {
-    const snowParticle = document.createElement('div');
-    const snowParticleSize = getRandomNum(
-      options.minPartSize,
-      options.maxPartSize
-    );
-    const animationTime = getRandomNum(
-      options.minAnimationTime,
-      options.maxAnimationTime
-    );
-    const margin = getRandomNum(0, 100);
+//   for (let i = 0; i < options.amount; i++) {
+//     const snowParticle = document.createElement('div');
+//     const snowParticleSize = getRandomNum(
+//       options.minPartSize,
+//       options.maxPartSize
+//     );
+//     const animationTime = getRandomNum(
+//       options.minAnimationTime,
+//       options.maxAnimationTime
+//     );
+//     const margin = getRandomNum(0, 100);
 
-    snowParticle.classList.add('snow__particle');
-    snowParticle.style.width = snowParticleSize + 'px';
-    snowParticle.style.height = snowParticleSize + 'px';
-    snowParticle.style.animation = `snowfall ${animationTime}ms infinite linear`;
-    snowParticle.style.left = `${margin}%`;
-    snowWrapper.append(snowParticle);
-  }
+//     snowParticle.classList.add('snow__particle');
+//     snowParticle.style.width = snowParticleSize + 'px';
+//     snowParticle.style.height = snowParticleSize + 'px';
+//     snowParticle.style.animation = `snowfall ${animationTime}ms infinite linear`;
+//     snowParticle.style.left = `${margin}%`;
+//     snowWrapper.append(snowParticle);
+//   }
 
-  options.target.append(snow);
-  return snow;
-}
+//   options.target.append(snow);
+//   return snow;
+// }
 export interface IElement {
   tag: string;
   class: string;

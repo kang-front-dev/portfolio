@@ -1,6 +1,23 @@
 export const projectsData = {
   cards: [
     {
+      id: 'frontview',
+      title: 'FrontView',
+      descr: `Front-view is a blog type application with
+       reviews, posts, profiles, authorization,
+        [rating, likes, dislikes, views, comments]`,
+      imageSrc: 'assets/images/projects/frontview.png',
+      extraImg: [
+        'assets/images/projects/frontview-extra-1.png',
+        'assets/images/projects/frontview-extra-2.png',
+        'assets/images/projects/frontview-extra-3.png',
+      ],
+      techs: ['react', 'ts', 'scss', 'mui', 'node', 'express', 'mongo'],
+      date: '09.01.2023',
+      link: 'https://ios-phone-app.netlify.app/',
+      isHot: true,
+    },
+    {
       id: 'ios-phone',
       title: 'IOS Phone App',
       descr: `A copy of the original IOS phone app with calls,
@@ -13,9 +30,8 @@ export const projectsData = {
         'assets/images/projects/ios-phone-extra-3.png',
       ],
       techs: ['html', 'scss', 'ts'],
-      date: '2022.9.28',
+      date: '28.09.2022.',
       link: 'https://ios-phone-app.netlify.app/',
-      isHot: true
     },
     {
       id: 'momentum',
@@ -29,7 +45,7 @@ export const projectsData = {
         'assets/images/projects/momentum-extra-2.png',
       ],
       techs: ['html', 'css', 'js'],
-      date: '2021.10.30',
+      date: '30.10.2021',
       link: 'https://kang-front-dev.github.io/momentum/',
     },
     {
@@ -63,7 +79,7 @@ export const projectsData = {
         'assets/images/projects/funiro-extra-4.png',
       ],
       techs: ['html', 'css', 'js'],
-      date: '2021.07.26',
+      date: '26.07.2021',
       link: 'https://kang-front-dev.github.io/funiro/',
     },
     {
@@ -72,7 +88,7 @@ export const projectsData = {
       descr: `Endless road construction built on React.js`,
       videoSrc: `assets/video/video.mp4`,
       techs: ['html', 'scss', 'js', 'ts'],
-      date: '2022.11.11',
+      date: '11.11.2022',
       link: 'https://infinity-road.netlify.app/',
     },
     {
