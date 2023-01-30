@@ -14,7 +14,8 @@ export const projectsData = {
       ],
       techs: ['react','redux', 'ts', 'scss', 'mui', 'node', 'express', 'mongo'],
       date: '09.01.2023',
-      link: 'https://ios-phone-app.netlify.app/',
+      link: 'https://frontview-kang.netlify.app/',
+      ghlink: 'https://github.com/kang-front-dev/blog-app',
       isHot: true,
     },
     {
@@ -32,6 +33,7 @@ export const projectsData = {
       techs: ['html', 'scss', 'ts'],
       date: '28.09.2022.',
       link: 'https://ios-phone-app.netlify.app/',
+      ghlink: 'https://github.com/kang-front-dev/ios-phone-app',
     },
     {
       id: 'momentum',
@@ -47,6 +49,7 @@ export const projectsData = {
       techs: ['html', 'css', 'js'],
       date: '30.10.2021',
       link: 'https://kang-front-dev.github.io/momentum/',
+      ghlink: 'https://github.com/kang-front-dev/momentum',
     },
     {
       id: 'christmass',
@@ -56,6 +59,7 @@ export const projectsData = {
       extraImg: ['assets/images/projects/christmass-extra-1.png'],
       techs: ['html', 'css', 'scss', 'js', 'ts'],
       link: 'https://kang-front-dev.github.io/christmass/App/dist/index.html',
+      ghlink: 'https://github.com/kang-front-dev/christmass',
     },
     {
       id: 'artquiz',
@@ -64,6 +68,7 @@ export const projectsData = {
       imageSrc: 'assets/images/projects/artquiz.png',
       techs: ['html', 'css', 'scss', 'js', 'ts'],
       link: 'https://kang-front-dev.github.io/art-quiz/art-quiz/',
+      ghlink: 'https://github.com/kang-front-dev/art-quiz',
     },
     {
       id: 'funiro',
@@ -81,6 +86,7 @@ export const projectsData = {
       techs: ['html', 'css', 'js'],
       date: '26.07.2021',
       link: 'https://kang-front-dev.github.io/funiro/',
+      ghlink: 'https://github.com/kang-front-dev/funiro',
     },
     {
       id: 'infinity-road',
@@ -90,6 +96,7 @@ export const projectsData = {
       techs: ['html', 'scss', 'js', 'ts'],
       date: '11.11.2022',
       link: 'https://infinity-road.netlify.app/',
+      ghlink: 'https://github.com/kang-front-dev/infinity-road',
     },
     {
       id: 'clocks',
@@ -98,6 +105,7 @@ export const projectsData = {
       imageSrc: 'assets/images/projects/clocks.png',
       techs: ['html', 'css', 'scss', 'js', 'ts'],
       link: 'https://kang-front-dev.github.io/aesthetic-clocks/',
+      ghlink: 'https://github.com/kang-front-dev/aesthetic-clocks',
     },
     {
       id: 'pendulums',
@@ -106,6 +114,7 @@ export const projectsData = {
       imageSrc: 'assets/images/projects/pendulums.png',
       techs: ['html', 'css', 'scss', 'js', 'ts'],
       link: 'https://kang-front-dev.github.io/pendulums/',
+      ghlink: 'https://github.com/kang-front-dev/pendulums',
     },
   ],
 };

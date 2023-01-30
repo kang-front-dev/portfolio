@@ -213,7 +213,7 @@ export class Projects {
 
     const btnGithub = document.createElement('a');
     btnGithub.textContent = 'Github';
-    btnGithub.href = cardInfo.link;
+    btnGithub.href = cardInfo.ghlink;
     btnGithub.target = '_blank';
     btnGithub.classList.add('projects__review_btn');
 
