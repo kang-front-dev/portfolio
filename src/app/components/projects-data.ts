@@ -12,7 +12,7 @@ export const projectsData = {
         'assets/images/projects/frontview-extra-2.png',
         'assets/images/projects/frontview-extra-3.png',
       ],
-      techs: ['react', 'ts', 'scss', 'mui', 'node', 'express', 'mongo'],
+      techs: ['react','redux', 'ts', 'scss', 'mui', 'node', 'express', 'mongo'],
       date: '09.01.2023',
       link: 'https://ios-phone-app.netlify.app/',
       isHot: true,

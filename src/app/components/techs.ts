@@ -5,6 +5,7 @@ export interface ITech {
     | 'js'
     | 'ts'
     | 'react'
+    | 'redux'
     | 'mui'
     | 'scss'
     | 'mui'
@@ -50,6 +51,10 @@ const techsInfo = [
   {
     abbr: 'react',
     fullName: 'React',
+  },
+  {
+    abbr: 'redux',
+    fullName: 'Redux',
   },
   {
     abbr: 'node',
