@@ -2,7 +2,7 @@ $animationTime: 0.4s;
 $animationMode: ease;
 .gearSystem {
   width: 100%;
-
+  position: relative;
   border-radius: 50%;
 
   display: flex;
