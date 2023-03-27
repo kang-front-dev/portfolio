@@ -40,7 +40,6 @@ export class GearSystem {
     }
   }
   init() {
-
     this.runAnimation();
 
     let gears = [];
@@ -87,8 +86,8 @@ export class GearSystem {
       setTimeout(() => {
         this.initSpin();
         if (window.innerWidth <= 800) {
-          const gearWrapper = document.querySelector('.gearSystem_wrapper')
-          gearWrapper.classList.add('active')
+          const gearWrapper = document.querySelector('.gearSystem_wrapper');
+          gearWrapper.classList.add('active');
         }
       }, 300);
     }
@@ -116,6 +115,13 @@ export class GearSystem {
 
       this.makeSpin(spinDegree);
     }, 40);
+
+    setTimeout(() => {
+      const waves = document.querySelectorAll('.gearSystem_wave');
+      waves.forEach((wave) => {
+        wave.classList.add('active');
+      });
+    }, 1000);
   }
   makeSpin(degree) {
     this.gear1.style.transform = `rotate(${degree}deg)`;
